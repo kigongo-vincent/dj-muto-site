@@ -1,6 +1,17 @@
+import { useEffect } from "react"
+import { useNavigate } from "react-router";
 
 
 const Spash = () => {
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            navigate("/tabs")
+        }, 1500);
+        return () => clearTimeout(timeout)
+    }, [])
+
     return (
         <div className="splash flex flex-col justify-end gap-2 items-center pb-10 h-screen w-screen bg-cover">
 
