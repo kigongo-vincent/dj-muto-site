@@ -1,8 +1,13 @@
-
+import AudioPlay from "./components/base/AudioPlay"
+import Router from "./routes/Index"
 
 const App = () => {
+
   return (
-    <div>App</div>
+    <>
+      <AudioPlay />
+      <Router />
+    </>
   )
 }
 
