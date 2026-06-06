@@ -4,7 +4,9 @@ import { Activity } from "react"
 
 export type audioAction = "like" | "play" | "more"
 
-export interface AudioI {
+
+
+export interface MediaI {
     ID: number
     title: string
     caption: string
@@ -16,6 +18,8 @@ export interface AudioI {
 
 }
 
+export interface AudioI extends MediaI { }
+
 export const fallbackCover = "https://images.pexels.com/photos/19943363/pexels-photo-19943363.jpeg"
 const Audio = (a: AudioI) => {
 
@@ -23,7 +27,7 @@ const Audio = (a: AudioI) => {
 
     return (
         <div
-            className="bg-ground-1 p-4 gap-4 flex cursor-pointer items-center rounded-xl">
+            className="bg-ground-1 p-4 sm:gap-4 gap-2  flex cursor-pointer items-center rounded-xl">
 
             <img src={cover}
                 onClick={() => a?.action?.(a?.ID, "play")}
@@ -31,14 +35,13 @@ const Audio = (a: AudioI) => {
 
             <div
                 onClick={() => a?.action?.(a?.ID, "play")}
-                className="flex-1 flex flex-col gap-2">
+                className="flex-1 flex flex-col sm:gap-2 gap-1">
                 <div className="flex items-center gap-2">
                     <p className="font-medium">{a?.title}</p>
                     <Activity mode={a?.isNew ? "visible" : "hidden"}>
                         <span className="bg-[#D3AA24]/10 text-[#D3AA24] flex items-center gap-1 text-sm  px-4 py-1 rounded-full">
                             <Lineicons icon={SparkOutlined} size={14} />
-
-                            brand new</span>
+                            new</span>
                     </Activity>
                 </div>
                 <p className="text-sm text-text-0/60">{a?.caption}</p>

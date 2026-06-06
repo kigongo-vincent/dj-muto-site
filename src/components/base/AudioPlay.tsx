@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { Activity, useEffect, useRef } from "react"
 import { usePlaying } from "../../store/AudioStore"
 import { fallbackCover } from "../screens/home/Audio"
 import Lineicons from "@lineiconshq/react-lineicons"
@@ -20,16 +20,20 @@ const AudioPlay = () => {
 
     const { pathname } = useLocation()
 
-    const hidePlayer = pathname == "/tabs/playing" || pathname == "/"
+    const hidePlayer = ["/tabs/playing", "/", "/tabs/bio"]?.includes(pathname)
 
     if (playing == null) {
         return
     }
 
 
+    useEffect(() => {
+        console.log(audioRef?.current)
+    }, [audioRef])
+
     return (
-        <>
-            <div className={`fixed  bottom-[10vh] w-full p-4 z-60 ${hidePlayer && "hidden"}`}>
+        <Activity mode={isPlaying ? "visible" : "hidden"}>
+            <div className={`fixed  bottom-[9vh] w-full p-4 z-60 ${hidePlayer && "hidden"}`}>
 
                 <div className="w-full flex gap-4 justify-between bg-ground-1/40 backdrop-blur-md border border-text-0/5 p-4 rounded ">
 
@@ -62,7 +66,7 @@ const AudioPlay = () => {
 
             </div>
             <audio className="hidden" src={playing?.url} ref={audioRef} />
-        </>
+        </Activity>
 
     )
 }

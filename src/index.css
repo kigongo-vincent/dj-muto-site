@@ -19,6 +19,10 @@ body {
   --text-0: rgb(225, 225, 235);
 }
 
+.font-fancy {
+  font-family: "Brush Script MT";
+}
+
 .splash {
   background: linear-gradient(rgba(0, 0, 0, 0.78), rgb(0, 0, 0)),
     url("./assets/muto2.JPG");

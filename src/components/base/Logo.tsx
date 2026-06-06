@@ -1,8 +1,11 @@
+import { Link } from "react-router"
 
 
 const Logo = () => {
+
+
     return (
-        <div className="font-bold text-lg">Dj Muto Pro</div>
+        <Link to={"/"} className="font-bold text-lg">Dj Muto Pro</Link>
     )
 }
 

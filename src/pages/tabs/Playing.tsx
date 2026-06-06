@@ -1,13 +1,33 @@
 import Lineicons from "@lineiconshq/react-lineicons"
 import { usePlaying } from "../../store/AudioStore"
 import { MenuHamburger1Solid, NextStep2Solid, PlaySolid, PreviousStep2Solid, SparkOutlined } from "@lineiconshq/free-icons"
-import { Activity } from "react"
+import { Activity, useEffect, useState } from "react"
 import AudioProgress from "../../components/screens/playing/AudioProgress"
+import Modal from "../../components/base/Modal"
+import FlexRender from "../../components/base/FlexRender"
+import type { AudioI } from "../../components/screens/home/Audio"
+import { audioList } from "./Home"
+import Audio from "../../components/screens/home/Audio"
 
 
 const Playing = () => {
 
     const { playing } = usePlaying()
+    const [audios, setAudios] = useState<AudioI[]>([]);
+    const [open, setOpen] = useState(false)
+
+
+    if (!playing) {
+        return <div className="flex flex-col flex-1 justify-center items-center h-screen">No music currently playing</div>
+    }
+
+    useEffect(() => {
+        setAudios(audioList)
+    }, [])
+
+    function ActionResolver(arg0: string, id: any, a: any) {
+        throw new Error("Function not implemented.")
+    }
 
     return (
         <div
@@ -22,7 +42,7 @@ const Playing = () => {
 
                 {/* header  */}
                 <div className="flex justify-end">
-                    <div className="bg-white/10 rounded-full h-16 flex items-center justify-center w-16">
+                    <div onClick={() => setOpen(true)} className="bg-white/10 cursor-pointer rounded-full h-16 flex items-center justify-center w-16">
                         <Lineicons icon={MenuHamburger1Solid} />
                     </div>
                 </div>
@@ -75,6 +95,12 @@ const Playing = () => {
                 </div>
 
             </div>
+
+
+            {/* music list  */}
+            <Modal open={open} className="bg-ground-0 max-w-[80vw]" onClose={() => setOpen(false)} position="right">
+                <FlexRender className="" items={audios} render={(item, index) => <Audio key={index} {...item} action={(id, a) => ActionResolver("audio", id, a)} />} />
+            </Modal>
 
 
 
