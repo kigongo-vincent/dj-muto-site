@@ -73,7 +73,7 @@ const Favourites = () => {
     ];
 
 
-    const [videos, setVideos] = useState<VideoI[]>([
+    const [videos] = useState<VideoI[]>([
         {
             ID: 2,
             title: "How SpaceX Lands Rockets",

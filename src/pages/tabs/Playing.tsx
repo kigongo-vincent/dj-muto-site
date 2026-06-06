@@ -26,6 +26,7 @@ const Playing = () => {
     }, [])
 
     function ActionResolver(arg0: string, id: any, a: any) {
+        console.log(arg0, id, a)
         throw new Error("Function not implemented.")
     }
 
