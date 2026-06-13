@@ -21,8 +21,13 @@ const Tab = (t: TabI) => {
     return (
         <div
             onClick={() => navigate(t?.path)}
-            className={`flex cursor-pointer flex-col items-center justify-center gap-1 ${isActive && "text-primary"}`}>
+            className={`flex cursor-pointer relative flex-col items-center justify-center gap-1 ${isActive && "text-primary"}`}>
             <div>{t?.icon}</div>
+
+            <Activity mode={isActive && t?.title == "bio" ? "visible" : "hidden"}>
+                <span className="h-4 w-4 border-3 border-ground-1 rounded-full bg-primary absolute right-0 top-0"></span>
+            </Activity>
+
             <Activity mode={t?.title ? "visible" : "hidden"}>
                 <span className="text-[10px] text-text-">{t?.title}</span>
             </Activity>
@@ -51,6 +56,7 @@ const Tabs = () => {
                 <img src={ProfilePic} className="h-18 absolute border-4 border-ground-0 -top-10 object-cover  rounded-full w-18" />
             </div>,
             path: "/tabs/bio",
+            title: "bio"
         },
         {
             icon: <Lineicons icon={HeartSolid} />,

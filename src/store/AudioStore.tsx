@@ -6,7 +6,9 @@ export interface AudioStoreI {
     isPlaying: boolean
     setIsPlaying: (p: boolean) => void
     playing: AudioI | null
-    setPlaying: (a: AudioI) => void
+    menu: AudioI[]
+    setMenu: (m: AudioI[]) => void
+    setPlaying: (a: AudioI | null) => void
 }
 
 export const usePlaying = create<AudioStoreI>()(
@@ -14,6 +16,8 @@ export const usePlaying = create<AudioStoreI>()(
         (set) => ({
             playing: null,
             isPlaying: false,
+            menu: [],
+            setMenu: (m) => { set({ menu: m }) },
             setIsPlaying: (p) => { set(() => ({ isPlaying: p })) },
             setPlaying: (a) => { set(() => ({ playing: a })) }
         }),

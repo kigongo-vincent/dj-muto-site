@@ -58,7 +58,7 @@ const Modal = ({ position = "center", onClose, children, className, open, action
                                 exit={{ y: "100%" }}
                                 transition={{ type: "tween", duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                                 onClick={(e) => e.stopPropagation()}
-                                className={`h-[30vh] max-h-[80vh] overflow-auto w-full  overflow-y-auto border-l border-text-0/10 bg-paper p-5 sm:p-6 md:max-w-xl md:p-8 sm:max-w-lg ${className ?? ""}`}
+                                className={`h-[30vh] max-h-[80vh] overflow-auto w-full  overflow-y-auto border-l border-text-0/10 bg-ground-2 p-5 sm:p-6 md:max-w-xl md:p-8 sm:max-w-lg ${className ?? ""}`}
                             >
                                 {children}
                             </motion.div>
@@ -74,12 +74,12 @@ const Modal = ({ position = "center", onClose, children, className, open, action
                                     exit={{ y: 28, opacity: 0 }}
                                     transition={sheetTransition}
                                     onClick={(e) => e.stopPropagation()}
-                                    className={`bg-paper mx-3 sm:mx-4 w-[min(100%,28rem)] sm:w-[min(92vw,36rem)] md:w-[min(40vw,42rem)] max-h-[90dvh] rounded-lg p-4 sm:p-6 flex flex-col ${className ?? ""}`}
+                                    className={`bg-ground-2 mx-3 sm:mx-4 w-[min(100%,28rem)] sm:w-[min(92vw,36rem)] md:w-[min(40vw,42rem)] max-h-[90dvh] rounded-lg p-4 sm:p-6 flex flex-col ${className ?? ""}`}
                                 >
 
                                     {/* header - fixed at top, not scrollable */}
                                     <div className="flex mb-6 items-center justify-end shrink-0">
-                                        <button onClick={onClose} className="hover:bg-pale">
+                                        <button onClick={onClose} className="hover:bg-ground-1">
                                             <Lineicons icon={XmarkSolid} />
                                         </button>
                                     </div>
@@ -108,7 +108,7 @@ const Modal = ({ position = "center", onClose, children, className, open, action
                                     exit={{ x: "100%" }}
                                     transition={{ type: "tween", duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                                     onClick={(e) => e.stopPropagation()}
-                                    className={`h-full max-h-dvh w-full max-w-[87vw] overflow-y-auto border-l border-text-0/10 bg-paper p-5 sm:p-6 md:max-w-xl md:p-8 sm:max-w-lg ${className ?? ""}`}
+                                    className={`h-full max-h-dvh w-full max-w-[87vw] overflow-y-auto border-l border-text-0/10 bg-ground-2 p-5 sm:p-6 md:max-w-xl md:p-8 sm:max-w-lg ${className ?? ""}`}
                                 >
                                     {children}
                                 </motion.div>

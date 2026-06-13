@@ -5,7 +5,7 @@ const Bio = () => {
         <div className="h-screen w-screen relative">
 
             {/* image */}
-            <img src={BG1} className="absolute mix-blend-luminosity h-full w-full left-0 to-0" alt="" />
+            <img src={BG1} className="absolute mix-blend-luminosity h-full w-full object-cover left-0 to-0" alt="" />
 
             {/* overlay */}
 

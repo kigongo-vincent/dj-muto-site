@@ -70,7 +70,7 @@ const Home = () => {
     ])
 
     const [audios, setAudios] = useState<AudioI[]>([]);
-    const { setPlaying, setIsPlaying } = usePlaying()
+    const { setPlaying, setIsPlaying, setMenu } = usePlaying()
 
     const [mixtapes, setMixtapes] = useState<AudioI[]>([])
 
@@ -78,6 +78,10 @@ const Home = () => {
         setAudios(audioList)
         setMixtapes(audioList.slice(1, 4)?.map(a => ({ ...a, cover: MixCover })))
     }, [])
+
+    useEffect(() => {
+        setMenu([...audios, ...mixtapes])
+    }, [audios, mixtapes])
 
     const Play = (ID: number) => {
         const audio = audios?.find(a => a?.ID == ID)

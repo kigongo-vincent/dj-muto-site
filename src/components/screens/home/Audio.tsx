@@ -1,6 +1,7 @@
 import { HeartOutlined, HeartSolid, MenuMeatballs1Solid, SparkOutlined } from "@lineiconshq/free-icons"
 import Lineicons from "@lineiconshq/react-lineicons"
 import { Activity } from "react"
+import TrackMenu from "../../base/TrackMenu"
 
 export type audioAction = "like" | "play" | "more"
 
@@ -14,6 +15,7 @@ export interface MediaI {
     liked: boolean
     url: string
     cover?: string
+    state?: { volume: number, time: { current: number, total: number } }
     action?: (ID: number, a: audioAction) => void
 
 }
@@ -51,9 +53,13 @@ const Audio = (a: AudioI) => {
             <button className="" onClick={() => a?.action?.(a?.ID, "like")}>
                 <Lineicons icon={a?.liked ? HeartSolid : HeartOutlined} />
             </button >
-            <button onClick={() => a?.action?.(a?.ID, "more")} className="rotate-90">
-                <Lineicons icon={MenuMeatballs1Solid} />
-            </button>
+            <TrackMenu
+                trigger={
+                    <button className="rotate-90">
+                        <Lineicons icon={MenuMeatballs1Solid} />
+                    </button>
+                }
+            />
 
         </div>
     )
